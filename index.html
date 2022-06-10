@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <title>ternary calculator</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+            
+            function calc()
+            {
+                var n1 = parseInt(document.getElementById('n1').value,3);
+                var n2 = parseInt(document.getElementById('n2').value,3);
+                
+                var oper = document.getElementById('operators').value;
+                
+                if(oper === '+')
+                {
+                    document.getElementById('result').value = convertToTernary(n1+n2);
+                }
+                
+                if(oper === '-')
+                {
+                    document.getElementById('result').value = convertToTernary(n1-n2);
+                }
+                
+                if(oper === '/')
+                {
+                    document.getElementById('result').value = convertToTernary(n1/n2);
+                }
+                
+                if(oper === 'X')
+                {
+                    document.getElementById('result').value = convertToTernary(n1*n2);
+                }
+            }
+            function convertToTernary(N)
+    {
+        // Base case
+        if (N == 0)
+            return;
+ 
+        // Finding the remainder
+        // when N is divided by 3
+        let x = N % 3;
+        N = parseInt(N / 3, 10);
+        if (x < 0)
+            N += 1;
+ 
+        // Recursive function to
+        // call the function for
+        // the integer division
+        // of the value N/3
+        convertToTernary(N);
+ 
+        // Handling the negative cases
+        if (x < 0)
+            document.write(x + (3 * -1));
+        else
+            document.write(x);
+    }
+ 
+ 
+// This code is contributed by divyeshrabadiya07. a upravil jsem ho ja (Jiri Koval)
+function disn1(val)
+         {
+             document.getElementById("n1").value+=val
+         }
+function disn2(val)
+         {
+             document.getElementById("n2").value+=val
+         }
+        </script>
+        
+    </head>
+    <body>
+        
+        <input type="text" id="n1"/><br/><br/>
+        
+        <button onclick="disn1('0')">0</button>
+        <button onclick="disn1('1')">1</button>
+        <button onclick="disn1('2')">2</button><br><br/>
+
+        <select id="operators">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="/">/</option>
+            <option value="X">X</option>
+        </select><br><br/>
+        
+        <input type="text" id="n2"/><br/><br/>
+
+        <button onclick="disn2('0')">0</button>
+        <button onclick="disn2('1')">1</button>
+        <button onclick="disn2('2')">2</button><br><br/>
+        
+        
+        <button onclick="calc();">=</button>
+
+    </body>
+</html>
