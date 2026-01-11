@@ -58,10 +58,8 @@ class Object {
         const floor = this.screen.height - this.radius;
         const rightWall = this.screen.width - this.radius;
 
-        // apply velocity
         this.position = this.position.add(this.velocity);
 
-        // collision with floor
         if (this.position.y > floor) {
             this.position = new Vector(this.position.x, floor);
             this.velocity = new Vector(
@@ -70,7 +68,6 @@ class Object {
             );
         }
             
-        // collision with ceiling
         if (this.position.y < this.radius) {
             this.position = new Vector(this.position.x, this.radius);
             this.velocity = new Vector(
@@ -79,7 +76,6 @@ class Object {
             );
         }
 
-        // collision with right wall
         if (this.position.x > rightWall) {
             this.position = new Vector(rightWall, this.position.y);
             this.velocity = new Vector(
@@ -88,7 +84,6 @@ class Object {
             );
         }
 
-        // collision with left wall
         if (this.position.x < this.radius) {
             this.position = new Vector(this.radius, this.position.y);
             this.velocity = new Vector(
@@ -97,7 +92,6 @@ class Object {
             );
         }
 
-        // apply acceleration
         this.velocity = this.velocity.add(this.acceleration);
         this.velocity = this.velocity.scale(0.99);
     }
